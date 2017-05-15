@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<input type="checkbox" name="" id="id1" value="" onclick="selAllNo();" />全选/全不选
+		<br />
+		<input type="checkbox" name="boxid" id="" value="" />篮球
+		<input type="checkbox" name="boxid" id="boxid" value="" />排球
+		<input type="checkbox" name="boxid" id="boxid" value="" />羽毛球
+		<input type="checkbox" name="boxid" id="boxid" value="" />乒乓球
+		<br />
+		<input type="button" value="全选" onclick="selAll();" />
+		<input type="button" value="全不选" onclick="selNo()" />
+		<input type="button" value="反选" onclick="selOther()" />
+
+		<script type="text/javascript">
+			
+			//第一个复选框选择或全不选
+			function selAllNo(){
+				
+				var love2=document.getElementById("id1");
+				if (love2.checked == true) {
+					selAll();
+				} else{
+					selNo();
+				}
+				
+				
+				
+			}
+			
+			//实现全选的操作
+			function selAll() {
+				/**
+				 * 1.获取要操作的复选框
+				 *    -使用getElementsByName()
+				 * 2.返回是数组
+				 *    -属性 checked判断复选框是否选中
+				 *    checked=true 表示选中
+				 *    checked=false 表示不选中
+				 *    -遍历数组，得到的是每一个checkbox
+				 *     把每一个checked属性checked=true
+				 */
+
+				//获取要操作的复选框
+				var loves = document.getElementsByName("boxid");
+				for(var i = 0; i < loves.length; i++) {
+					var love1 = loves[i];
+					love1.checked = true;
+				}
+
+			}
+			
+				//实现全不选的操作
+			function selNo() {
+				//获取要操作的复选框
+				var loves = document.getElementsByName("boxid");
+				for(var i = 0; i < loves.length; i++) {
+					var love1 = loves[i];
+					love1.checked = false;
+				}
+			}
+			
+				//反选的操作
+			function selOther() {
+				//获取要操作的复选框
+				var loves = document.getElementsByName("boxid");
+				for(var i = 0; i < loves.length; i++) {
+					var love1 = loves[i];
+					if(love1.checked == true){
+						love1.checked = false;
+					}else{
+						love1.checked = true;
+					}
+					
+				}
+			}
+		</script>
+	</body>
+</html>
